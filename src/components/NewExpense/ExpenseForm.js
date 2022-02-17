@@ -19,9 +19,14 @@ const ExpenseForm = () => {
     console.warn('Current form state', formData);
   };
 
-  const onChangeTitleHandler = (e) => setFormData({...formData, title: e.target.value});
-  const onChangeAmountHandler = (e) => setFormData({...formData, amount: +e.target.value});
-  const onChangeDateHandler = (e) => setFormData({...formData, date: +e.target.value});
+  const onChangeTitleHandler = (e) => setFormData((prevState) =>
+    ({...prevState, title: e.target.value}));
+
+  const onChangeAmountHandler = (e) => setFormData((prevState) =>
+    ({...prevState, amount: +e.target.value}));
+
+  const onChangeDateHandler = (e) => setFormData((prevState) =>
+    ({...prevState, date: +e.target.value}));
 
   return (
     <form>
