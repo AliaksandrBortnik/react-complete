@@ -1,7 +1,7 @@
 import './ExpenseForm.css';
 import {useState} from 'react';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState(0.01);
   const [date, setDate] = useState('2022-02-17');
@@ -15,7 +15,7 @@ const ExpenseForm = () => {
       date: new Date(date)
     };
 
-    console.warn('Current form state', formData);
+    props.saveExpense(formData);
 
     setTitle('');
     setAmount(0.01);
@@ -35,7 +35,7 @@ const ExpenseForm = () => {
         </div>
         <div className='new-expense__control'>
           <label>Amount</label>
-          <input type='number' value={amount} onChange={onChangeAmountHandler} min='0.01' step='0 .01'/>
+          <input type='number' value={amount} onChange={onChangeAmountHandler} min='0.01' step='0.01'/>
         </div>
         <div className='new-expense__control'>
           <label>Date</label>
