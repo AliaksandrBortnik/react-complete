@@ -4,12 +4,22 @@ import {useState} from 'react';
 const ExpenseForm = () => {
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState(0.01);
-  const [date, setDate] = useState();
+  const [date, setDate] = useState('2022-02-17');
 
   const onSubmitFormHandler = (e) => {
     e.preventDefault();
-    const formData = { title, amount, date};
+
+    const formData = {
+      title,
+      amount,
+      date: new Date(date)
+    };
+
     console.warn('Current form state', formData);
+
+    setTitle('');
+    setAmount(0.01);
+    setDate('2022-02-17');
   };
 
   const onChangeTitleHandler = (e) => setTitle(e.target.value);
@@ -17,7 +27,7 @@ const ExpenseForm = () => {
   const onChangeDateHandler = (e) => setDate(e.target.value);
 
   return (
-    <form>
+    <form onSubmit={onSubmitFormHandler}>
       <div className='new-expense__controls'>
         <div className='new-expense__control'>
           <label>Title</label>
@@ -33,7 +43,7 @@ const ExpenseForm = () => {
         </div>
       </div>
       <div className='new-expense__actions'>
-        <button type='submit' onClick={onSubmitFormHandler}>Add Expense</button>
+        <button type='submit'>Add Expense</button>
       </div>
     </form>
   );
