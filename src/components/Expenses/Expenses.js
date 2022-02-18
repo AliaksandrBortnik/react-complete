@@ -11,19 +11,21 @@ const Expenses = (props) => {
 
   const applyFilterHandler = year => setFilterYear(year);
 
+  const expenseContent = filteredExpenses.length === 0 ?
+    <p>No expenses</p> :
+    filteredExpenses.map(expense =>
+      <ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      />
+    );
+
   return (
     <div className='expenses'>
       <ExpensesFilter applyFilter={applyFilterHandler}/>
-      {
-        filteredExpenses.map(expense =>
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        )
-      }
+      {expenseContent}
     </div>
   );
 }
