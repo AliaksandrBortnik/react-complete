@@ -2,8 +2,8 @@ import Chart from '../Chart/Chart';
 
 const ExpensesChart = props => {
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  const dataPoints = months.map(m => ({
-    label: m,
+  const dataPoints = months.map(month => ({
+    label: month,
     value: 0
   }));
 
