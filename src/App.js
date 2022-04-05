@@ -14,10 +14,10 @@ const App = () => {
   };
 
   return (
-    <div>
+    <>
       <NewExpense addExpense={addExpenseHandler}/>
       <Expenses items={expenses}/>
-    </div>
+    </>
   );
 }
 
